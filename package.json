@@ -1,0 +1,29 @@
+{
+	"name": "curso-api-rest-javascript-practico",
+	"version": "1.0.0",
+	"description": "Curso Práctico de Consumo de API REST con JavaScript",
+	"main": "index.html",
+	"scripts": {
+		"format": "prettier --write .",
+		"lint": "eslint --fix . --ext .js, .jsx"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/julianescobarje/curso-api-rest-javascript-practico.git"
+	},
+	"author": "Julian Escobar <escobarjulian347@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/julianescobarje/curso-api-rest-javascript-practico/issues"
+	},
+	"homepage": "https://github.com/julianescobarje/curso-api-rest-javascript-practico#readme",
+	"devDependencies": {
+		"eslint": "8.17.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-config-standard": "17.0.0",
+		"eslint-plugin-import": "2.26.0",
+		"eslint-plugin-n": "15.2.2",
+		"eslint-plugin-promise": "6.0.0",
+		"prettier": "2.6.2"
+	}
+}
