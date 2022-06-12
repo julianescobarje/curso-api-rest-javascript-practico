@@ -76,3 +76,10 @@ async function getMoviesByCategory(id) {
 
 	createMovies(movies, genericSection)
 }
+
+async function getTrendingMovies() {
+	const { data } = await API('trending/movie/day')
+	const movies = data.results
+
+	createMovies(movies, genericSection)
+}
