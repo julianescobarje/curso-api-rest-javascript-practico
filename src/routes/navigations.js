@@ -80,7 +80,18 @@ const movieDetailsPage = () => {
 	getNode.genericSection.classList.add('inactive')
 	getNode.movieDetailSection.classList.remove('inactive')
 
-	const [, movieId] = location.hash.split('=')
+	const [, movieData] = location.hash.split('=')
+	console.log(movieData)
+	const [movieId] = movieData.split('-')
+
+	getNode.headerSection.style.background = 'url("")'
+
+	getNode.movieDetailTitle.innerText = ''
+	getNode.movieDetailDescription.innerText = ''
+	getNode.movieDetailScore.innerText = ''
+	getNode.movieDetailCategoriesList.innerHTML = ''
+	getNode.relatedMoviesContainer.innerHTML = ''
+
 	getData.movieById(movieId)
 }
 

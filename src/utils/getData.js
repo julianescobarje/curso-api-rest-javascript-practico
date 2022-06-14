@@ -8,6 +8,8 @@ import {
 	movieDetailDescription,
 	movieDetailScore,
 	movieDetailCategoriesList,
+	headerSection,
+	relatedMoviesContainer,
 } from './getNode.js'
 
 const URL_IMG_BASE = 'https://image.tmdb.org/t/p/w300'
@@ -163,6 +165,16 @@ const movieById = async id => {
 		if (status !== 200)
 			throw new Error(`Error en la petición GET. Código HTTP: ${status}`)
 
+		const movieImgURL = `${URL_IMG_BASE.slice(0, -3)}500${movie.poster_path}`
+		headerSection.style.background = `
+			linear-gradient(
+				180deg,
+				rgba(0, 0, 0, 0.35) 19.27%,
+				rgba(0, 0, 0, 0) 29.17%
+			),
+			url(${movieImgURL})
+		`
+
 		movieDetailTitle.innerText = movie.title
 		movieDetailDescription.innerText = movie.overview
 		movieDetailScore.innerText = movie.vote_average
@@ -175,9 +187,25 @@ const movieById = async id => {
 				title: category.name,
 			})
 		})
+
+		relatedMoviesById(id)
 	} catch (error) {
 		requestError(error)
 	}
+}
+
+const relatedMoviesById = async id => {
+	const { data } = await api.get(`movie/${id}/similar`)
+	const movies = data.results
+
+	movies.forEach(movie => {
+		addImageContainer({
+			nodeContainer: relatedMoviesContainer,
+			id: movie.id,
+			posterPath: movie.poster_path,
+			title: movie.title,
+		})
+	})
 }
 
 export default {
